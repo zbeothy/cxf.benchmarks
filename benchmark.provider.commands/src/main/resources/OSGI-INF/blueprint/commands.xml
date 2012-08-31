@@ -1,0 +1,23 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" default-activation="eager">
+
+    <command-bundle xmlns="http://karaf.apache.org/xmlns/shell/v1.0.0">
+        <command name="benchmark/report">
+            <action class="org.talend.ps.benchmark.provider.commands.Report">
+				<property name="historyIn" ref="eventsHistoryIn"></property>
+            </action>
+        </command>
+        <command name="benchmark/reset">
+            <action class="org.talend.ps.benchmark.provider.commands.Reset">
+				<property name="historyIn" ref="eventsHistoryIn"></property>
+				<property name="historyOut" ref="eventsHistoryOut"></property>
+            </action>
+        </command>
+        <command name="benchmark/save">
+            <action class="org.talend.ps.benchmark.provider.commands.Save">
+				<property name="historyIn" ref="eventsHistoryIn"></property>
+				<property name="historyOut" ref="eventsHistoryOut"></property>
+            </action>
+        </command>
+    </command-bundle>
+
+</blueprint>

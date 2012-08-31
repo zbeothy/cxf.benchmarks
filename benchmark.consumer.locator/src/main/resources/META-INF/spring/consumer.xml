@@ -1,0 +1,77 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:osgi="http://www.springframework.org/schema/osgi" xmlns:osgix="http://www.springframework.org/schema/osgi-compendium"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd
+		http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
+		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+        http://www.springframework.org/schema/osgi-compendium http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	">
+	
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:/META-INF/tesb/locator/beans-osgi.xml" />
+
+	<context:property-placeholder properties-ref="benchmark.consumer" />
+	<osgix:cm-properties id="benchmark.consumer" persistent-id="benchmark.consumer"/>
+
+	<bean id="requestHistory" class="org.talend.ps.benchmark.common.events.EventsHistory">
+		<property name="historyFileName">
+			<value>${history.file.request}</value>
+		</property>
+		<property name="saveLoad">
+			<value>${history.saveLoad.request}</value>
+		</property>
+		<property name="saveHistory">
+			<value>${history.saveHistory.request}</value>
+		</property>
+	</bean>
+
+	<bean id="responseHistory" class="org.talend.ps.benchmark.common.events.EventsHistory">
+		<property name="historyFileName">
+			<value>${history.file.response}</value>
+		</property>
+		<property name="saveLoad">
+			<value>${history.saveLoad.response}</value>
+		</property>
+		<property name="saveHistory">
+			<value>${history.saveHistory.response}</value>
+		</property>
+	</bean>
+
+	<bean id="WSConsumerInvoker" class="org.talend.ps.benchmark.consumer.WSConsumerInvoker">
+		<property name="threadCount">
+			<value>${thread.count}</value>
+		</property>
+		<property name="messageCount">
+			<value>${message.count}</value>
+		</property>
+		<property name="messageSize">
+			<value>${message.size}</value>
+		</property>
+		<property name="waitTimeout">
+			<value>${wait.timeout}</value>
+		</property>
+		<property name="loadFileName">
+			<value>${load.file}</value>
+		</property>
+		<property name="requestHistory" ref="requestHistory" />
+		<property name="responseHistory" ref="responseHistory" />
+		<property name="client" ref="WSClient" />
+	</bean>
+
+	<jaxws:client id="WSClient"
+		wsdlLocation="classpath:/Benchmark.wsdl"
+		xmlns:serviceNamespace="http://www.talend.org/benchmark"
+		serviceClass="org.talend.benchmark.Benchmark"
+		serviceName="serviceNamespace:BenchmarkService" endpointName="serviceNamespace:BenchmarkSOAP"
+		address="${target.endpoint}">		
+		<jaxws:features>
+			<bean class="org.talend.esb.servicelocator.cxf.LocatorFeature">
+			</bean>
+		</jaxws:features>
+	</jaxws:client>
+
+</beans>

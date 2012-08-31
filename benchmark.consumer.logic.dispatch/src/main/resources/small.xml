@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shipment xmlns="http://www.openapplications.org/oagis/9">
+    <ShipmentHeader>
+        <ShipFromParty>
+            <Name>Software AG / SOPERA - DGF POC Team</Name>
+            <Location>
+               <Address>
+                   <AttentionOfName>DGF POC Team</AttentionOfName>
+                   <StreetName>Uhlandstrasse 12</StreetName>
+                   <CityName>Darmstadt</CityName>
+                   <PostalCode>64297</PostalCode>
+               </Address>
+            </Location>
+            <Contact>
+               <Name>Franz Felsmann</Name>
+               <JobTitle>Sales</JobTitle>
+            </Contact>
+        </ShipFromParty>
+        <RequiredDeliveryDateTime>2009-08-11</RequiredDeliveryDateTime>
+        <PromisedDeliveryDateTime>2009-07-10</PromisedDeliveryDateTime>
+        <EarliestShipDateTime>2009-07-10</EarliestShipDateTime>
+        <ScheduledShipDateTime>2009-07-10</ScheduledShipDateTime>
+    </ShipmentHeader>
+</Shipment>

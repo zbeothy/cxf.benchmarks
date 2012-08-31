@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  #%L
+  Talend ESB Runtime :: Example Basic Features
+  %%
+  Copyright (C) 2011 Talend Inc.
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #L%
+  -->
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
+	<!-- repository>mvn:org.talend.esb/features/${project.version}/xml</repository
+		-->
+	<feature name="benchmark-consumer" version="${project.version}">
+		<bundle>mvn:${project.groupId}/benchmark.common/${project.version}</bundle>
+		<bundle start="false">mvn:${project.groupId}/benchmark.consumer/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/benchmark.consumer.logic/${project.version}</bundle>
+	        <configfile finalname="/etc/benchmark.consumer.cfg">
+        	    mvn:${project.groupId}/benchmark.features/${project.version}/cfg/benchmark.consumer
+	        </configfile>
+	</feature>
+
+	<feature name="benchmark-consumer-jms" version="${project.version}">
+		<feature>activemq</feature>
+		<bundle>mvn:${project.groupId}/benchmark.common/${project.version}</bundle>
+		<bundle start="false">mvn:${project.groupId}/benchmark.consumer.jms/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/benchmark.consumer.logic/${project.version}</bundle>
+	        <configfile finalname="/etc/benchmark.consumer.cfg">
+        	    mvn:${project.groupId}/benchmark.features/${project.version}/cfg/benchmark.consumer
+	        </configfile>
+	</feature>
+
+	<feature name="benchmark-consumer-dispatch" version="${project.version}">
+		<bundle>mvn:${project.groupId}/benchmark.common/${project.version}</bundle>
+		<bundle start="false">mvn:${project.groupId}/benchmark.consumer.dispatch/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/benchmark.consumer.logic.dispatch/${project.version}</bundle>
+	        <configfile finalname="/etc/benchmark.consumer.cfg">
+        	    mvn:${project.groupId}/benchmark.features/${project.version}/cfg/benchmark.consumer
+	        </configfile>
+	</feature>
+
+	<feature name="benchmark-consumer-locator" version="${project.version}">
+		<bundle>mvn:${project.groupId}/benchmark.common/${project.version}</bundle>
+		<bundle start="false">mvn:${project.groupId}/benchmark.consumer.locator/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/benchmark.consumer.logic/${project.version}</bundle>
+	        <configfile finalname="/etc/benchmark.consumer.cfg">
+        	    mvn:${project.groupId}/benchmark.features/${project.version}/cfg/benchmark.consumer
+	        </configfile>
+	</feature>
+
+	<feature name="benchmark-consumer-sam" version="${project.version}">
+		<bundle>mvn:${project.groupId}/benchmark.common/${project.version}</bundle>
+		<bundle start="false">mvn:${project.groupId}/benchmark.consumer.sam/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/benchmark.consumer.logic/${project.version}</bundle>
+	        <configfile finalname="/etc/benchmark.consumer.cfg">
+        	    mvn:${project.groupId}/benchmark.features/${project.version}/cfg/benchmark.consumer
+	        </configfile>
+	</feature>
+
+	<feature name="benchmark-provider" version="${project.version}">
+		<bundle>mvn:${project.groupId}/benchmark.common/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/benchmark.provider.logic/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/benchmark.provider/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/benchmark.provider.commands/${project.version}</bundle>
+	        <configfile finalname="/etc/benchmark.provider.cfg">
+        	    mvn:${project.groupId}/benchmark.features/${project.version}/cfg/benchmark.provider
+	        </configfile>
+	</feature>
+
+	<feature name="benchmark-provider-jms" version="${project.version}">
+		<feature>activemq</feature>
+		<bundle>mvn:${project.groupId}/benchmark.common/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/benchmark.provider.logic/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/benchmark.provider.jms/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/benchmark.provider.commands/${project.version}</bundle>
+	        <configfile finalname="/etc/benchmark.provider.cfg">
+        	    mvn:${project.groupId}/benchmark.features/${project.version}/cfg/benchmark.provider
+	        </configfile>
+	</feature>
+
+	<feature name="benchmark-provider-locator" version="${project.version}">
+		<feature>activemq</feature>
+		<bundle>mvn:${project.groupId}/benchmark.common/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/benchmark.provider.logic/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/benchmark.provider.locator/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/benchmark.provider.commands/${project.version}</bundle>
+	        <configfile finalname="/etc/benchmark.provider.cfg">
+        	    mvn:${project.groupId}/benchmark.features/${project.version}/cfg/benchmark.provider
+	        </configfile>
+	</feature>
+
+	<feature name="benchmark-provider-sam" version="${project.version}">
+		<feature>activemq</feature>
+		<bundle>mvn:${project.groupId}/benchmark.common/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/benchmark.provider.logic/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/benchmark.provider.sam/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/benchmark.provider.commands/${project.version}</bundle>
+	        <configfile finalname="/etc/benchmark.provider.cfg">
+        	    mvn:${project.groupId}/benchmark.features/${project.version}/cfg/benchmark.provider
+	        </configfile>
+	</feature>
+
+	<feature name="benchmark-provider-jpa" version="${project.version}">
+		<feature>activemq</feature>
+		<bundle>mvn:${project.groupId}/benchmark.common/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/benchmark.provider.logic.jpa/${project.version}</bundle>
+		<bundle>mvn:${project.groupId}/benchmark.provider.commands/${project.version}</bundle>
+	        <configfile finalname="/etc/benchmark.provider.cfg">
+        	    mvn:${project.groupId}/benchmark.features/${project.version}/cfg/benchmark.provider
+	        </configfile>
+	</feature>
+</features>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.talend.org/benchmark"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	name="WSBenchmark" 
+	targetNamespace="http://www.talend.org/benchmark">
+   <wsdl:types>
+    <xsd:schema targetNamespace="http://www.talend.org/benchmark">
+	<xsd:complexType name="XMLContent">
+		<xsd:sequence>
+			<xsd:any namespace="##other" />
+		</xsd:sequence>
+	</xsd:complexType>
+      <xsd:element name="request" type="tns:XMLContent"/>
+      <xsd:element name="oneWayRequest" type="tns:XMLContent"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="reqRespRequest">
+    <wsdl:part element="tns:request" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="reqRespResponse">
+    <wsdl:part element="tns:request" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="oneWayRequest">
+    <wsdl:part element="tns:oneWayRequest" name="parameters"/>
+  </wsdl:message>
+  
+  <wsdl:portType name="Benchmark">
+    <wsdl:operation name="requestResponse">
+      <wsdl:input message="tns:reqRespRequest"/>
+      <wsdl:output message="tns:reqRespResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="oneWay">
+      <wsdl:input message="tns:oneWayRequest"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  
+  <wsdl:binding name="BenchmarkSOAP" type="tns:Benchmark">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="requestResponse">
+      <soap:operation soapAction="http://www.talend.org/benchmark/requestResponse"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="oneWay">
+      <soap:operation soapAction="http://www.talend.org/benchmark/oneWay"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  
+  <wsdl:service name="BenchmarkService">
+    <wsdl:port binding="tns:BenchmarkSOAP" name="BenchmarkSOAP">
+      <soap:address location="http://localhost:8040/services/WSProvider/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

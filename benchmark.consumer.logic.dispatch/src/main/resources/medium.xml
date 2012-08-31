@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document   : Shipment.xml
+    Description: DGF PoC - Template Test Document
+-->
+<Shipment xmlns="http://www.openapplications.org/oagis/9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.openapplications.org/oagis/9 Shipment.xsd">
+
+    <ShipmentHeader>
+        <!-- ShipFromParty is the sender -->
+        <ShipFromParty>
+            <Name>Software AG / SOPERA - DGF POC Team</Name>
+            <Location>
+               <Address>
+                   <AttentionOfName>DGF POC Team</AttentionOfName>
+                   <StreetName>Uhlandstrasse 12</StreetName>
+                   <CityName>Darmstadt</CityName>
+                   <PostalCode>64297</PostalCode>
+               </Address>
+            </Location>
+            <Contact>
+               <Name>Franz Felsmann</Name>
+               <JobTitle>Sales Executive</JobTitle>
+               <DepartmentName>Vertical Sales</DepartmentName>
+            </Contact>
+        </ShipFromParty>
+
+        <!-- CarrierParty is DHL -->
+        <CarrierParty>
+            <Name>DHL Global Forwarding</Name>
+            <Location>
+               <Address>
+                   <AttentionOfName>String</AttentionOfName>
+                   <StreetName>String</StreetName>
+                   <CityName>String</CityName>
+                   <PostalCode>String</PostalCode>
+				   <UserArea>
+					   <StreetName>Uhlandstr.</StreetName>
+					   <BuildingName>12</BuildingName>                   
+                   </UserArea>                   
+               </Address>
+            </Location>
+            <Contact>
+               <Name>String</Name>
+               <JobTitle>String</JobTitle>
+               <DepartmentName>String</DepartmentName>
+            </Contact>
+        </CarrierParty>
+
+        <!-- ShipToParty is the receiver -->
+        <ShipToParty>
+            <Name>DHL Global Forwarding</Name>
+               <Location>
+                   <Address>
+                       <AttentionOfName>Gary Bedford</AttentionOfName>
+                       <StreetName>Fritz-Erler-Str 5</StreetName>
+                       <CityName>Bonn</CityName>
+                       <PostalCode>53113</PostalCode>
+                   </Address>
+               </Location>
+                <Contact>
+                   <Name>Gary Bedford</Name>
+                   <JobTitle>Programme Manager</JobTitle>
+                   <DepartmentName>DHL Global Forwarding Enterprise Architecture</DepartmentName>
+                </Contact>
+        </ShipToParty>
+
+        <!-- dates used by the service and process layer -->
+        <RequiredDeliveryDateTime>2009-08-11</RequiredDeliveryDateTime>
+        <PromisedDeliveryDateTime>2009-07-10</PromisedDeliveryDateTime>
+        <EarliestShipDateTime>2009-07-10</EarliestShipDateTime>
+        <PromisedShipDateTime>2009-07-10</PromisedShipDateTime>
+        <ScheduledShipDateTime>2009-07-10</ScheduledShipDateTime>
+
+    </ShipmentHeader>
+
+    <ShipmentItem>
+        <Description>WebMethods SOPERA Edition</Description>
+        <Note>DGF RFP Solution</Note>
+        <OrderQuantity>1</OrderQuantity>
+		<ShippedQuantity>1</ShippedQuantity>
+
+        <RequisitionReference>
+            <DocumentID>
+                <ID>1.0</ID>
+                <RevisionID>1.0</RevisionID>
+                <VariationID>1.0</VariationID>
+            </DocumentID>
+            <Description>Requisition Reference Description</Description>
+            <Note>Requisition Reference Note</Note>
+        </RequisitionReference>
+
+        <PurchaseOrderReference>
+            <DocumentID>
+                <ID>PO4711</ID>
+                <RevisionID>1.0</RevisionID>
+                <VariationID>1.0</VariationID>
+            </DocumentID>
+            <Description>Purchase Order Reference Description</Description>
+            <Note>Purchase Order Reference Note</Note>
+        </PurchaseOrderReference>
+
+        <SalesOrderReference>
+            <DocumentID>
+                <ID>SO4711</ID>
+                <RevisionID>1.0</RevisionID>
+                <VariationID>1.0</VariationID>
+            </DocumentID>
+            <Description>Sales Order Reference Description</Description>
+            <Note>Sales Order Reference Note</Note>
+        </SalesOrderReference>
+
+        <ItemSubLine>
+            <SerialNumber>1234567890</SerialNumber>
+            <Quantity>1</Quantity>
+        </ItemSubLine>
+
+    </ShipmentItem>
+        <ShipmentItem>
+        <Description>WebMethods SOPERA Edition</Description>
+        <Note>DGF RFP Solution</Note>
+        <OrderQuantity>1</OrderQuantity>
+		<ShippedQuantity>1</ShippedQuantity>
+
+        <ItemSubLine>
+            <SerialNumber>1234567890</SerialNumber>
+            <Quantity>1</Quantity>
+        </ItemSubLine>
+
+    </ShipmentItem>
+  <ShipmentItem>
+        <Description>WebMethods SOPERA Edition</Description>
+        <Note>DGF RFP Solution</Note>
+        <OrderQuantity>1</OrderQuantity>
+		<ShippedQuantity>1</ShippedQuantity>
+
+        <RequisitionReference>
+            <DocumentID>
+                <ID>1.0</ID>
+            </DocumentID>
+            <Description>Requisition Reference Description</Description>
+            <Note>Requisition Reference Note</Note>
+        </RequisitionReference>
+
+        <PurchaseOrderReference>
+            <DocumentID>
+                <ID>PO4711</ID>
+                <RevisionID>1.0</RevisionID>
+                <VariationID>1.0</VariationID>
+            </DocumentID>
+            <Description>Purchase Order Reference Description</Description>
+            <Note>Purchase Order Reference Note</Note>
+        </PurchaseOrderReference>
+
+        <SalesOrderReference>
+            <DocumentID>
+                <ID>SO4711</ID>
+                <RevisionID>1.0</RevisionID>
+                <VariationID>1.0</VariationID>
+            </DocumentID>
+            <Description>Sales Order Reference Description</Description>
+            <Note>Sales Order Reference Note</Note>
+        </SalesOrderReference>
+
+        <ItemSubLine>
+            <SerialNumber>1234567890</SerialNumber>
+            <Quantity>1</Quantity>
+        </ItemSubLine>
+
+    </ShipmentItem>
+<ShipmentUnit>
+    <!-- TrackingID should be unique for all test data -->
+    <TrackingID>4711</TrackingID>
+    <ShipUnitTotalID>4711</ShipUnitTotalID>
+    <ContainerID>4711</ContainerID>
+
+        <!-- CarrierParty is DHL -->
+        <CarrierParty>
+            <Name>DHL Global Forwarding</Name>
+            <Location>
+                <Address>
+                   <AttentionOfName>String</AttentionOfName>
+                   <StreetName>String</StreetName>
+                   <CityName>String</CityName>
+                   <PostalCode>String</PostalCode>
+               </Address>
+            </Location>
+            <Contact>
+               <Name>String</Name>
+               <JobTitle>String</JobTitle>
+               <DepartmentName>String</DepartmentName>
+            </Contact>
+        </CarrierParty>
+
+        <!-- ShipFromParty is the sender -->
+        <ShipFromParty>
+            <Name>Software AG / SOPERA - DGF POC Team</Name>
+            <Location>
+               <Address>
+                   <AttentionOfName>POC Team</AttentionOfName>
+                   <StreetName>Uhlandstrasse 12</StreetName>
+                   <CityName>Darmstadt</CityName>
+                   <PostalCode>64297</PostalCode>
+               </Address>
+            </Location>
+            <Contact>
+               <Name>Franz Felsmann</Name>
+               <JobTitle>Sales Executive</JobTitle>
+               <DepartmentName>Vertical Sales</DepartmentName>
+            </Contact>
+        </ShipFromParty>
+
+        <!-- ShipToLocation is the receiver -->
+        <ShipToLocation>
+            <Name>Gary Bedford</Name>
+               <Address>
+                   <AttentionOfName>Gary Bedford</AttentionOfName>
+                       <StreetName>Fritz-Erler-Str 5</StreetName>
+                       <CityName>Bonn</CityName>
+                       <PostalCode>53113</PostalCode>
+               </Address>
+        </ShipToLocation>
+
+
+</ShipmentUnit>
+<ShipmentUnit>
+    <!-- TrackingID should be unique for all test data -->
+    <TrackingID>4711</TrackingID>
+    <ShipUnitTotalID>4711</ShipUnitTotalID>
+    <ContainerID>4711</ContainerID>
+
+        <!-- CarrierParty is DHL -->
+        <CarrierParty>
+            <Name>DHL Global Forwarding</Name>
+            <Location>
+                <Address>
+                   <AttentionOfName>String</AttentionOfName>
+                   <StreetName>String</StreetName>
+                   <CityName>String</CityName>
+                   <PostalCode>String</PostalCode>
+               </Address>
+            </Location>
+            <Contact>
+               <Name>String</Name>
+               <JobTitle>String</JobTitle>
+               <DepartmentName>String</DepartmentName>
+            </Contact>
+        </CarrierParty>
+
+        <!-- ShipFromParty is the sender -->
+        <ShipFromParty>
+            <Name>Software AG / SOPERA - DGF POC Team</Name>
+            <Location>
+               <Address>
+                   <AttentionOfName>DGF POC Team</AttentionOfName>
+                   <StreetName>Uhlandstrasse 12</StreetName>
+                   <CityName>Darmstadt</CityName>
+                   <PostalCode>64297</PostalCode>
+               </Address>
+            </Location>
+            <Contact>
+               <Name>Franz Felsmann</Name>
+               <JobTitle>Sales Executive</JobTitle>
+               <DepartmentName>Vertical Sales</DepartmentName>
+            </Contact>
+        </ShipFromParty>
+
+        <!-- ShipToLocation is the receiver -->
+        <ShipToLocation>
+            <Name>Gary Bedford</Name>
+               <Address>
+                   <AttentionOfName>Gary Bedford</AttentionOfName>
+                       <StreetName>Fritz-Erler-Str 5</StreetName>
+                       <CityName>Bonn</CityName>
+                       <PostalCode>53113</PostalCode>
+               </Address>
+        </ShipToLocation>
+
+
+</ShipmentUnit>
+
+</Shipment>
