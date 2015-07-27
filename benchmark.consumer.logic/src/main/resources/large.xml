@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Shipment xmlns="http://www.openapplications.org/oagis/9">
+<request xmlns="http://www.talend.org/benchmark">
 	<ShipmentHeader>
 		<DocumentID agencyRole="Text">
 			<ID schemeAgencyName="String" schemeAgencyID="normalizedString"
@@ -16496,4 +16496,4 @@
 	</ShipmentUnit>
 
 	
-</Shipment>
+</request>
