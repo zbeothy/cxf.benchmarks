@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Shipment xmlns="http://www.openapplications.org/oagis/9">
+<request xmlns="http://www.talend.org/benchmark">
     <ShipmentHeader>
         <ShipFromParty>
             <Name>Software AG / SOPERA - DGF POC Team</Name>
@@ -21,4 +21,4 @@
         <EarliestShipDateTime>2009-07-10</EarliestShipDateTime>
         <ScheduledShipDateTime>2009-07-10</ScheduledShipDateTime>
     </ShipmentHeader>
-</Shipment>
+</request>

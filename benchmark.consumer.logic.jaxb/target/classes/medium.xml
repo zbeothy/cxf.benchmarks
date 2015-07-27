@@ -3,7 +3,7 @@
     Document   : Shipment.xml
     Description: DGF PoC - Template Test Document
 -->
-<Shipment xmlns="http://www.openapplications.org/oagis/9">
+<request xmlns="http://www.talend.org/benchmark">
 
     <ShipmentHeader>
         <!-- ShipFromParty is the sender -->
@@ -278,4 +278,4 @@
 
 </ShipmentUnit>
 
-</Shipment>
+</request>
