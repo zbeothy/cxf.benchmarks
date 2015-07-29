@@ -162,7 +162,7 @@ public class WSConsumerInvoker implements InitializingBean {
 
 	private void setOperation(Benchmark client) {
 		BindingProvider provider = (BindingProvider) client;
-		provider.getRequestContext().put(SoapBindingConstants.SOAP_ACTION, OPERATION_NAME);
+		provider.getRequestContext().put(SoapBindingConstants.SOAP_ACTION, "");
 		provider.getRequestContext().put(MessageContext.WSDL_OPERATION, OPERATION_QNAME);        
 		provider.getRequestContext().put("thread.local.request.context", "true");
 	}

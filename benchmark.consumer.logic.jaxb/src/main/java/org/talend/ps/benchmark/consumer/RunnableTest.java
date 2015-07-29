@@ -6,17 +6,18 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.dom.DOMSource;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Holder;
 
 import org.apache.cxf.headers.Header;
 import org.apache.cxf.jaxb.JAXBDataBinding;
 import org.talend.benchmark.Benchmark;
-import org.talend.benchmark.XMLContent;
 import org.talend.ps.benchmark.common.events.BenchmarkConstants;
 import org.talend.ps.benchmark.common.events.EventsHistory;
-import org.w3c.dom.Element;
+import org.w3c.dom.Document;
 
 public class RunnableTest implements Runnable {
     private static DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -41,15 +42,15 @@ public class RunnableTest implements Runnable {
 
 	@Override
 	public void run() {
-		try {
-			Element domMessage = dbf.newDocumentBuilder().parse(new ByteArrayInputStream(message)).getDocumentElement();
+        try {
+			DocumentBuilder builder = dbf.newDocumentBuilder();
+			Document document = builder.parse(new ByteArrayInputStream(message));
+            DOMSource domSource = new DOMSource(document);
 			for (int i = 0; i < messageCount; i++) {
 				UUID uuid = UUID.randomUUID();
 				setMessageID(client, uuid.toString());
 				requestHistory.addEvent(uuid.toString());
-				XMLContent content = new XMLContent();
-				content.setAny(domMessage);
-				client.requestResponse(new Holder<XMLContent>(content));
+				client.requestResponse(new Holder<>(domSource));
 				//client.oneWay(content);
 				responseHistory.addEvent(uuid.toString());
 			}
