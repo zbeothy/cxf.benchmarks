@@ -51,7 +51,7 @@ public class RunnableTest implements Runnable {
 				UUID uuid = UUID.randomUUID();
 				setMessageID(client, uuid.toString());
 				requestHistory.addEvent(uuid.toString());
-				client.requestResponse(new Holder<Source>(domSource));
+				client.requestResponse(new Holder<>(domSource));
 				//client.oneWay(content);
 				responseHistory.addEvent(uuid.toString());
 			}
