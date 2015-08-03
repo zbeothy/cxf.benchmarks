@@ -29,54 +29,32 @@
 	</licenses>
 
 	<properties>
-		<cxf.version>2.7.7</cxf.version>
-		<spring.version>3.2.4.RELEASE</spring.version>
-		<activemq.version>5.7.0</activemq.version>
-		<karaf.version>2.3.3</karaf.version>
-		<derby.version>10.8.1.2</derby.version>
-		<!-- Test dependencies -->
-		<junit.version>4.12</junit.version>
-		<!-- Log dependencies -->
-		<tesb.port>8040</tesb.port>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<mockito-version>1.8.4</mockito-version>
+
+		<cxf.version>2.6.5</cxf.version>
+		<spring.version>3.0.7.RELEASE</spring.version>
+		<activemq.version>5.5.1</activemq.version>
+		<karaf.version>2.2.9</karaf.version>
 		<eclipselink.version>2.4.0</eclipselink.version>
-		<log4j-version>1.2.17</log4j-version>
-		<slf4j-version>1.7.5</slf4j-version>
 	</properties>
 	
 	<modules>
 		<module>benchmark.common</module>
-		<module>benchmark.provider.commands</module>
-		<module>benchmark.provider.logic</module>
 		<module>benchmark.provider</module>
-		<module>benchmark.provider.jms</module>
-		<module>benchmark.consumer.logic</module>
+		<module>benchmark.provider.logic</module>
+		<module>benchmark.provider.commands</module>
 		<module>benchmark.consumer</module>
-		<module>benchmark.consumer.jms</module>
+		<module>benchmark.consumer.logic.jaxb</module>
 		<module>benchmark.consumer.locator</module>
 		<module>benchmark.provider.locator</module>
 		<module>benchmark.consumer.sam</module>
 		<module>benchmark.provider.sam</module>
-		<module>benchmark.provider.logic.jpa</module>
+		<module>benchmark.consumer.jms</module>
+		<module>benchmark.provider.jms</module>
 		<module>benchmark.features</module>
-		<module>db-command</module>
+		<!--<module>benchmark.provider.logic.jpa</module>-->
+		<!--<module>db-command</module>-->
 	</modules>
-
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>${mockito-version}</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
 
 	<build>
         <defaultGoal>install</defaultGoal>
@@ -109,8 +87,8 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.3</version>
 					<configuration>
-						<source>1.8</source>
-						<target>1.8</target>
+						<source>1.6</source>
+						<target>1.6</target>
 					</configuration>
 				</plugin>
 			</plugins>

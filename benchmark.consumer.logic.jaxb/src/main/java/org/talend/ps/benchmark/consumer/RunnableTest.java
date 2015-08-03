@@ -8,6 +8,7 @@ import java.util.UUID;
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Source;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Holder;
@@ -50,7 +51,7 @@ public class RunnableTest implements Runnable {
 				UUID uuid = UUID.randomUUID();
 				setMessageID(client, uuid.toString());
 				requestHistory.addEvent(uuid.toString());
-				client.requestResponse(new Holder<>(domSource));
+				client.requestResponse(new Holder<Source>(domSource));
 				//client.oneWay(content);
 				responseHistory.addEvent(uuid.toString());
 			}
