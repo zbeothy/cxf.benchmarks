@@ -11,11 +11,9 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 	">
 	
-	<import resource="classpath:META-INF/cxf/cxf.xml" />
-        <import resource="classpath:META-INF/tesb/agent-osgi.xml" />
+	<import resource="classpath:META-INF/tesb/agent-osgi.xml" />
 
-    <bean id="fixedProperties"
-        class="org.talend.esb.sam.common.handler.impl.CustomInfoHandler">
+    <bean id="fixedProperties" class="org.talend.esb.sam.common.handler.impl.CustomInfoHandler">
         <property name="customInfo">
             <map>
                 <entry key="Application name" value="Consumer" />

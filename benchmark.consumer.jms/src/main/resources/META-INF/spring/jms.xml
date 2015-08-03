@@ -1,38 +1,22 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
-	xmlns:osgi="http://www.springframework.org/schema/osgi" xmlns:osgix="http://www.springframework.org/schema/osgi-compendium"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd
-		http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
-		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
-        http://www.springframework.org/schema/osgi-compendium http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 	">
 
-	<bean id="jmsConnectionFactory2" class="org.apache.activemq.ActiveMQConnectionFactory">
-		<property name="brokerURL" value="tcp://localhost:61616" />
+
+	<bean id="jmsConnectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
+		<property name="targetConnectionFactory">
+			<bean class="org.apache.activemq.ActiveMQConnectionFactory">
+				<property name="brokerURL" value="tcp://localhost:61616" />
+                <property name="userName" value="tadmin"/>
+                <property name="password" value="tadmin"/>
+			</bean>
+		</property>
 	</bean>
-
-	<!-- bean id="cachingConnectionFactory"
-		class="org.springframework.jms.connection.CachingConnectionFactory">
-		<property name="targetConnectionFactory" ref="jmsConnectionFactory2" />
-		<property name="sessionCacheSize" value="20" />
-		<property name="cacheProducers" value="true" />
-		<property name="cacheConsumers" value="true" />
-	</bean-->
-
-	<bean id="pooledConnectionFactory"
-		class="org.apache.activemq.pool.PooledConnectionFactory">
-		<property name="maxConnections" value="20" />
-		<property name="maximumActive" value="20" />
-	</bean>
-
 
 	<bean id="jmsConfig" class="org.apache.cxf.transport.jms.JMSConfiguration">
-		<property name="connectionFactory" ref="pooledConnectionFactory" />
-		<property name="wrapInSingleConnectionFactory" value="true" />
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
 		<property name="useConduitIdSelector" value="false" />
 		<property name="targetDestination" value="in.queue" />
 		<property name="replyDestination" value="out.queue" />

@@ -11,7 +11,6 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 	">
 	
-	<import resource="classpath:META-INF/cxf/cxf.xml" />
 	<import resource="classpath:/META-INF/tesb/locator/beans-osgi.xml" />
 
 	<context:property-placeholder properties-ref="benchmark.consumer" />

@@ -19,11 +19,11 @@
 	</parent>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-api</artifactId>
-			<version>${cxf.version}</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.apache.cxf</groupId>-->
+			<!--<artifactId>cxf-api</artifactId>-->
+			<!--<version>${cxf.version}</version>-->
+		<!--</dependency>-->
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-frontend-jaxws</artifactId>
@@ -76,10 +76,6 @@
 				<configuration>
 					<instructions>
 						<Bundle-SymbolicName>${project.name}</Bundle-SymbolicName>
-						<Require-Bundle>
-							org.apache.cxf.bundle,
-							org.springframework.beans
-						</Require-Bundle>
 					</instructions>
 				</configuration>
 			</plugin>

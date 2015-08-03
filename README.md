@@ -4,25 +4,32 @@ cxf.benchmarks
 Contains performance benchmarks for CXF, Karaf deployment
 
 #Scenario SOAP over http:
-features:addurl mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
-features:install benchmark-provider
-features:install benchmark-consumer
+feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+feature:install benchmark-provider
+
+feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+feature:install benchmark-consumer
 
 #Scenario SOAP over http (Locator):
 tesb:start-locator
-features:addurl mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
-features:install benchmark-provider-locator
-features:install benchmark-consumer-locator
+feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+feature:install benchmark-provider-locator
+
+feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+feature:install benchmark-consumer-locator
 
 #Scenario SOAP over http (SAM):
 tesb:start-sam
-features:addurl mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
-features:install benchmark-provider-sam
-features:install benchmark-consumer-sam
+feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+feature:install benchmark-provider-sam
+
+feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+feature:install benchmark-consumer-sam
 
 #Scenario SOAP over JMS:
-features:install activemq-spring
-activemq:create-broker
-features:addurl mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
-features:install benchmark-provider-jms
-features:install benchmark-consumer-jms
+feature:install activemq-broker
+feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+feature:install benchmark-provider-jms
+
+feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+feature:install benchmark-consumer-jms
