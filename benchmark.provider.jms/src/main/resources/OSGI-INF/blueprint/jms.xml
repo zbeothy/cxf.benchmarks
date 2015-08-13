@@ -10,6 +10,7 @@
                 <property name="userName" value="tadmin"/>
                 <property name="password" value="tadmin"/>
                 <property name="useAsyncSend" value="true"/>
+                <property name="dispatchAsync" value="false"/>
             </bean>
         </property>
         <property name="cacheConsumers" value="true"/>
@@ -23,8 +24,8 @@
         <property name="cacheLevel" value="3"/>
         <property name="concurrentConsumers" value="50"/>
         <property name="maxConcurrentConsumers" value="50"/>
-        <property name="useConduitIdSelector" value="false"/>
         <property name="wrapInSingleConnectionFactory" value="false"/>
+        <property name="messageType" value="byte"/>
     </bean>
 
 </blueprint>
