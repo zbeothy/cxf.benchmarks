@@ -45,7 +45,7 @@ public class RunnableTest implements Runnable {
 				UUID uuid = UUID.randomUUID();
 				setMessageID(client, uuid.toString());
 				requestHistory.addEvent(uuid.toString());
-				Source source = new SAXSource(new InputSource(new ByteArrayInputStream(message)));
+				SAXSource source = new SAXSource(new InputSource(new ByteArrayInputStream(message)));
 				Holder<Source> s = new Holder<Source>(source);
 				client.requestResponse(s);
 				if (s.value instanceof SAXSource) {
@@ -53,7 +53,7 @@ public class RunnableTest implements Runnable {
 				    reader.setContentHandler(new DefaultHandler());
 				    reader.parse((String)null);
 				}
-				//client.oneWay(content);
+//				client.oneWay(content);
 				responseHistory.addEvent(uuid.toString());
 			}
 		} catch (Throwable e) {

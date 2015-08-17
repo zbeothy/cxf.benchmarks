@@ -7,7 +7,6 @@ Contains performance benchmarks for CXF, Karaf deployment
 features:addurl mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
 features:install benchmark-provider
 
-features:install cxf-http-async
 features:addurl mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
 features:install benchmark-consumer
 

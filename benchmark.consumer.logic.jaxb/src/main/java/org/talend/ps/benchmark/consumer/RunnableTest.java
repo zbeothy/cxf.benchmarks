@@ -10,6 +10,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Source;
 import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.sax.SAXSource;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Holder;
 
@@ -19,6 +20,8 @@ import org.talend.benchmark.Benchmark;
 import org.talend.ps.benchmark.common.events.BenchmarkConstants;
 import org.talend.ps.benchmark.common.events.EventsHistory;
 import org.w3c.dom.Document;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class RunnableTest implements Runnable {
     private static DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -51,7 +54,13 @@ public class RunnableTest implements Runnable {
 				UUID uuid = UUID.randomUUID();
 				setMessageID(client, uuid.toString());
 				requestHistory.addEvent(uuid.toString());
-				client.requestResponse(new Holder<>(domSource));
+				Holder<Source> holder = new Holder<>(domSource);
+				client.requestResponse(holder);
+				if (holder.value instanceof SAXSource) {
+					XMLReader reader = ((SAXSource)holder.value).getXMLReader();
+					reader.setContentHandler(new DefaultHandler());
+					reader.parse((String)null);
+				}
 				//client.oneWay(content);
 				responseHistory.addEvent(uuid.toString());
 			}

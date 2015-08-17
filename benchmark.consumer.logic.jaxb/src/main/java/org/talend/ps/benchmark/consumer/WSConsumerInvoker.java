@@ -136,7 +136,7 @@ public class WSConsumerInvoker implements InitializingBean {
 			executorSvc.execute(runnableTest);
 		}
 		executorSvc.shutdown();
-		executorSvc.awaitTermination(waitTimeout, TimeUnit.MILLISECONDS);
+		while(!executorSvc.awaitTermination(waitTimeout, TimeUnit.MILLISECONDS));
 	}
 
 	private void writeTestLogHeader(String time, FileOutputStream fo)
@@ -165,7 +165,6 @@ public class WSConsumerInvoker implements InitializingBean {
 		provider.getRequestContext().put(SoapBindingConstants.SOAP_ACTION, "");
 		provider.getRequestContext().put(MessageContext.WSDL_OPERATION, OPERATION_QNAME);        
 		provider.getRequestContext().put("thread.local.request.context", "true");
-		provider.getRequestContext().put("use.async.http.conduit", Boolean.TRUE);
 	}
 	
 	private byte[] loadMessage(String messageSize) throws IOException,
