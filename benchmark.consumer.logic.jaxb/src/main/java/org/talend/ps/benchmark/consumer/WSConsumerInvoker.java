@@ -24,11 +24,11 @@ import org.xml.sax.SAXException;
 
 /**
  * This class implements a generic policy provider.
- * 
+ *
  */
 public class WSConsumerInvoker implements InitializingBean {
-    private static final String OPERATION_NAME = "invoke";
-    private static final QName OPERATION_QNAME = new QName("http://www.talend.org/benchmark", OPERATION_NAME);
+	private static final String OPERATION_NAME = "invoke";
+	private static final QName OPERATION_QNAME = new QName("http://www.talend.org/benchmark", OPERATION_NAME);
 
 	private static final String LARGE = "large";
 	private static final String MEDIUM = "medium";
@@ -56,7 +56,7 @@ public class WSConsumerInvoker implements InitializingBean {
 	public void setMessageSize(String messageSize) {
 		this.messageSize = messageSize;
 	}
-	
+
 	public void setWaitTimeout(long waitTimeout) {
 		this.waitTimeout = waitTimeout;
 	}
@@ -72,12 +72,12 @@ public class WSConsumerInvoker implements InitializingBean {
 	public void setResponseHistory(EventsHistory history) {
 		this.responseHistory = history;
 	}
-	
- 	public void setClient(Benchmark client) {
+
+	public void setClient(Benchmark client) {
 		this.client = client;
 	}
 
- 	@Override
+	@Override
 	public void afterPropertiesSet() throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("Consumer initialized");
@@ -86,23 +86,23 @@ public class WSConsumerInvoker implements InitializingBean {
 
 		ExecutorService executorSvc = Executors.newSingleThreadExecutor();
 		executorSvc.execute(new Runnable() {
-			
+
 			@Override
 			public void run() {
-				runTests(message);			
+				runTests(message);
 			}
 		});
-		
+
 	}
 
 	public void runTests(byte[] message) {
 
 		try {
-			String time = new SimpleDateFormat(BenchmarkConstants.DATE_FORMAT).format(new Date()); 
+			String time = new SimpleDateFormat(BenchmarkConstants.DATE_FORMAT).format(new Date());
 			String loadFile = String.format(loadFileName, time);
 			FileOutputStream fo = new FileOutputStream(loadFile);
 			writeTestLogHeader(time, fo);
-				    
+
 			final long timeBefore = System.currentTimeMillis();
 			try {
 				runConcurrently(message);
@@ -112,7 +112,7 @@ public class WSConsumerInvoker implements InitializingBean {
 			} finally {
 				final long timeAfter = System.currentTimeMillis();
 				requestHistory.save();
-				responseHistory.save();				
+				responseHistory.save();
 				writeTestLogFooter(fo, timeBefore, timeAfter);
 				fo.close();
 			}
@@ -136,7 +136,7 @@ public class WSConsumerInvoker implements InitializingBean {
 			executorSvc.execute(runnableTest);
 		}
 		executorSvc.shutdown();
-		executorSvc.awaitTermination(waitTimeout, TimeUnit.MILLISECONDS);
+		while(!executorSvc.awaitTermination(waitTimeout, TimeUnit.MILLISECONDS));
 	}
 
 	private void writeTestLogHeader(String time, FileOutputStream fo)
@@ -148,7 +148,7 @@ public class WSConsumerInvoker implements InitializingBean {
 	}
 
 	private void writeTestLogFooter(FileOutputStream fo, final long timeBefore,
-			final long timeAfter) throws IOException {
+									final long timeAfter) throws IOException {
 		StringBuilder logMessage = new StringBuilder();
 		float throughput = messageCount * threadCount * 1000;
 		throughput = throughput / (timeAfter - timeBefore);
@@ -163,10 +163,10 @@ public class WSConsumerInvoker implements InitializingBean {
 	private void setOperation(Benchmark client) {
 		BindingProvider provider = (BindingProvider) client;
 		provider.getRequestContext().put(SoapBindingConstants.SOAP_ACTION, "");
-		provider.getRequestContext().put(MessageContext.WSDL_OPERATION, OPERATION_QNAME);        
+		provider.getRequestContext().put(MessageContext.WSDL_OPERATION, OPERATION_QNAME);
 		provider.getRequestContext().put("thread.local.request.context", "true");
 	}
-	
+
 	private byte[] loadMessage(String messageSize) throws IOException,
 			ParserConfigurationException, SAXException {
 		InputStream is = null;

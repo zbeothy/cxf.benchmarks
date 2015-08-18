@@ -1,26 +1,19 @@
-<beans xmlns="http://www.springframework.org/schema/beans"
-	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns="http://www.springframework.org/schema/beans"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="jmsConnectionFactory2" class="org.apache.activemq.ActiveMQConnectionFactory">
-		<property name="brokerURL" value="tcp://localhost:61616" />
-	</bean>
-
-	<bean id="jmsConnectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
-		<property name="targetConnectionFactory">
-			<bean class="org.apache.activemq.ActiveMQConnectionFactory">
-				<property name="brokerURL" value="tcp://localhost:61616" />
-				<property name="userName" value="tadmin"/>
-				<property name="password" value="tadmin"/>
-			</bean>
-		</property>
+	<bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61616"/>
+		<!--<property name="useAsyncSend" value="true"/>-->
+		<!--<property name="dispatchAsync" value="false"/>-->
 	</bean>
 
 	<bean id="jmsConfig" class="org.apache.cxf.transport.jms.JMSConfiguration">
-		<property name="connectionFactory" ref="jmsConnectionFactory" />
-		<property name="useConduitIdSelector" value="false" />
-		<property name="targetDestination" value="in.queue" />
-		<property name="replyDestination" value="out.queue" />
+		<property name="connectionFactory" ref="jmsConnectionFactory"/>
+		<property name="useConduitIdSelector" value="false"/>
+		<property name="targetDestination" value="in.queue"/>
+		<property name="replyDestination" value="out.queue"/>
+		<!--<property name="messageType" value="byte"/>-->
 	</bean>
 
 </beans>
