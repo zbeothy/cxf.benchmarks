@@ -7,25 +7,23 @@
             <bean class="org.apache.activemq.ActiveMQConnectionFactory">
                 <property name="brokerURL"
                           value="tcp://localhost:61616?socketBufferSize=131072"/>
-                <property name="userName" value="tadmin"/>
-                <property name="password" value="tadmin"/>
-                <property name="useAsyncSend" value="true"/>
-                <property name="dispatchAsync" value="false"/>
+                <!--<property name="useAsyncSend" value="true"/>-->
+                <!--<property name="dispatchAsync" value="false"/>-->
             </bean>
         </property>
         <property name="cacheConsumers" value="true"/>
         <property name="cacheProducers" value="true"/>
-        <property name="sessionCacheSize" value="50"/>
+        <property name="sessionCacheSize" value="5"/>
     </bean>
 
     <bean id="jmsConfig" class="org.apache.cxf.transport.jms.JMSConfiguration">
         <property name="connectionFactory" ref="cachingConnectionFactory"/>
         <property name="targetDestination" value="in.queue"/>
-        <property name="cacheLevel" value="3"/>
-        <property name="concurrentConsumers" value="50"/>
-        <property name="maxConcurrentConsumers" value="50"/>
+        <property name="concurrentConsumers" value="5"/>
         <property name="wrapInSingleConnectionFactory" value="false"/>
-        <property name="messageType" value="byte"/>
+        <!--<property name="cacheLevel" value="3"/>-->
+        <!--<property name="maxConcurrentConsumers" value="50"/>-->
+        <!--<property name="messageType" value="byte"/>-->
     </bean>
 
 </blueprint>
