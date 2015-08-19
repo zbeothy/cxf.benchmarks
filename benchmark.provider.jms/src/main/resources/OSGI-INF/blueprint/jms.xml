@@ -23,7 +23,7 @@
         <property name="wrapInSingleConnectionFactory" value="false"/>
         <!--<property name="cacheLevel" value="3"/>-->
         <!--<property name="maxConcurrentConsumers" value="50"/>-->
-        <!--<property name="messageType" value="byte"/>-->
+        <property name="messageType" value="byte"/>
     </bean>
 
 </blueprint>
