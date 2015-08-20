@@ -54,7 +54,7 @@ public class RunnableTest implements Runnable {
                 UUID uuid = UUID.randomUUID();
                 setMessageID(client, uuid.toString());
                 requestHistory.addEvent(uuid.toString());
-                Holder<Source> holder = new Holder<>(domSource);
+                Holder<Source> holder = new Holder<Source>(domSource);
                 client.requestResponse(holder);
                 if (holder.value instanceof SAXSource) {
                     XMLReader reader = ((SAXSource)holder.value).getXMLReader();
