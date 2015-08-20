@@ -13,7 +13,7 @@
 		<property name="useConduitIdSelector" value="false"/>
 		<property name="targetDestination" value="in.queue"/>
 		<property name="replyDestination" value="out.queue"/>
-		<!--<property name="messageType" value="byte"/>-->
+		<property name="messageType" value="byte"/>
 	</bean>
 
 </beans>
