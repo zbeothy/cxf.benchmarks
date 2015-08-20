@@ -1,10 +1,9 @@
-<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
-	xmlns:jaxws="http://cxf.apache.org/blueprint/jaxws"
-	xsi:schemaLocation="
-  http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
-  http://cxf.apache.org/blueprint/jaxws http://cxf.apache.org/schemas/blueprint/jaxws.xsd
-  ">
+<blueprint xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		   xmlns:jaxws="http://cxf.apache.org/blueprint/jaxws"
+		   xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+		   xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+
+  http://cxf.apache.org/blueprint/jaxws http://cxf.apache.org/schemas/blueprint/jaxws.xsd">
 	<reference id="eventsHistory" interface="org.talend.ps.benchmark.common.events.History" filter="(type=in)"/>
 
 	<bean id="WSProvider" class="org.talend.ps.benchmark.provider.WSProvider">
@@ -16,12 +15,12 @@
 	</bean>
 
 	<jaxws:endpoint xmlns:tns="http://www.talend.org/benchmark"
-		implementor="#WSProvider" endpointName="tns:WSProviderEndpoint"
-		serviceName="tns:BenchmarkService" address="jms://">
+					implementor="#WSProvider" endpointName="tns:WSProviderEndpoint"
+					serviceName="tns:BenchmarkService" address="jms://">
 		<jaxws:features>
 			<bean class="org.apache.cxf.transport.jms.JMSConfigFeature">
-				<property name="jmsConfig" ref="jmsConfig"/> 
-			 </bean>
+				<property name="jmsConfig" ref="jmsConfig"/>
+			</bean>
 		</jaxws:features>
 		<jaxws:properties>
 			<entry key="jaxws.provider.interpretNullAsOneway" value-ref="BooleanTrue" />

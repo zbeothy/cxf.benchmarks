@@ -1,23 +1,14 @@
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
-	xmlns:osgi="http://www.springframework.org/schema/osgi" xmlns:osgix="http://www.springframework.org/schema/osgi-compendium"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jms="http://cxf.apache.org/transports/jms"
-	xsi:schemaLocation="
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd
-		http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:osgix="http://www.springframework.org/schema/osgi-compendium"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns="http://www.springframework.org/schema/beans"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
         http://www.springframework.org/schema/osgi-compendium http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-        http://cxf.apache.org/transports/jms
-        http://cxf.apache.org/schemas/configuration/jms.xsd
-	">
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<context:property-placeholder
-		properties-ref="benchmark.consumer" />
-	<osgix:cm-properties id="benchmark.consumer"
-		persistent-id="benchmark.consumer" />
+	<context:property-placeholder properties-ref="benchmark.consumer" />
+	<osgix:cm-properties id="benchmark.consumer" persistent-id="benchmark.consumer" />
 
 	<bean id="requestHistory" class="org.talend.ps.benchmark.common.events.EventsHistory">
 		<property name="historyFileName">
@@ -64,12 +55,12 @@
 		<property name="client" ref="WSClient" />
 	</bean>
 
-	<jaxws:client id="WSClient"
-		wsdlLocation="classpath:/Benchmark.wsdl"
-		xmlns:serviceNamespace="http://www.talend.org/benchmark"
-		serviceClass="org.talend.benchmark.Benchmark"
-		serviceName="serviceNamespace:BenchmarkService" endpointName="serviceNamespace:BenchmarkSOAP"
-		address="${target.endpoint}">		
+	<jaxws:client xmlns:serviceNamespace="http://www.talend.org/benchmark"
+				  id="WSClient"
+				  wsdlLocation="classpath:/Benchmark.wsdl"
+				  serviceClass="org.talend.benchmark.Benchmark"
+				  serviceName="serviceNamespace:BenchmarkService" endpointName="serviceNamespace:BenchmarkSOAP"
+				  address="${target.endpoint}">
 		<jaxws:features>
 			<bean class="org.apache.cxf.transport.jms.JMSConfigFeature">
 				<property name="jmsConfig" ref="jmsConfig" />
