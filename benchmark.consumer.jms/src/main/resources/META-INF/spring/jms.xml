@@ -18,6 +18,7 @@
 		<property name="connectionFactory" ref="jmsPooledConnectionFactory"/>
 		<property name="targetDestination" value="in.queue"/>
 		<property name="messageType" value="byte"/>
+        <property name="concurrentConsumers" value="50"/>
 	</bean>
 
 </beans>
