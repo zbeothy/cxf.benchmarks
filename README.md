@@ -26,9 +26,8 @@ features:install benchmark-provider-sam
 features:addurl mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
 features:install benchmark-consumer-sam
 
-#Scenario SOAP over JMS:
+#Scenario SOAP over JMS (standalone broker):
 features:install activemq-spring
-activemq:create-broker
 features:addurl mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
 features:install benchmark-provider-jms
 

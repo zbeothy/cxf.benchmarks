@@ -39,6 +39,7 @@
 	</properties>
 	
 	<modules>
+		<module>benchmark.static</module>
 		<module>benchmark.common</module>
 		<module>benchmark.provider</module>
 		<module>benchmark.provider.logic</module>
