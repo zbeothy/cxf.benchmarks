@@ -6,14 +6,14 @@
         <property name="targetConnectionFactory">
             <bean class="org.apache.activemq.ActiveMQConnectionFactory">
                 <property name="brokerURL"
-                          value="tcp://localhost:61616?socketBufferSize=131072"/>
-                <!--<property name="useAsyncSend" value="true"/>-->
-                <!--<property name="dispatchAsync" value="false"/>-->
+                          value="tcp://localhost:61616?socketBufferSize=131072&#38;ioBufferSize=16384&#38;wireFormat.cacheSize=2048"/>
+                <property name="alwaysSessionAsync" value="false"/>
+                <property name="optimizeAcknowledge" value="true"/>
+                <property name="useAsyncSend" value="true"/>
             </bean>
         </property>
         <property name="cacheConsumers" value="true"/>
         <property name="cacheProducers" value="true"/>
-        <property name="sessionCacheSize" value="5"/>
     </bean>
 
     <bean id="jmsConfig" class="org.apache.cxf.transport.jms.JMSConfiguration">

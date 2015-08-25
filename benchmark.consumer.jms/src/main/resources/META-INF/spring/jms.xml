@@ -3,9 +3,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
-        <property name="brokerURL" value="tcp://localhost:61616"/>
-        <!--<property name="useAsyncSend" value="true"/>-->
-        <!--<property name="dispatchAsync" value="false"/>-->
+        <property name="brokerURL" value="tcp://localhost:61616?socketBufferSize=131072&#38;ioBufferSize=16384&#38;wireFormat.cacheSize=2048"/>
+        <property name="alwaysSessionAsync" value="false"/>
+        <property name="optimizeAcknowledge" value="true"/>
+        <property name="useAsyncSend" value="true"/>
     </bean>
 
     <bean id="jmsConfig" class="org.apache.cxf.transport.jms.JMSConfiguration">
