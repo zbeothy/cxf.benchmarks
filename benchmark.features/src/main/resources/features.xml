@@ -91,8 +91,10 @@
 
     <feature name="benchmark-provider-jpa" version="${project.version}">
         <feature>jndi</feature>
-        <feature>jpa</feature>
+        <feature version="[1,2)">jpa</feature>
         <feature>eclipselink</feature>
+        <bundle>mvn:org.apache.felix/org.apache.felix.coordinator/1.0.0</bundle>
+        <bundle>mvn:org.apache.aries.transaction/org.apache.aries.transaction.blueprint/1.1.1</bundle>
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.derby/10.8.1.2_1</bundle>
         <bundle>mvn:${project.groupId}/benchmark.datasource.derby/${project.version}</bundle>
         <bundle>mvn:${project.groupId}/benchmark.datasource.derby.model/${project.version}</bundle>

@@ -7,8 +7,6 @@
     <reference id="eventsHistoryIn" interface="org.talend.ps.benchmark.common.events.History" filter="(type=in)"/>
     <reference id="eventsHistoryOut" interface="org.talend.ps.benchmark.common.events.History" filter="(type=out)"/>
 
-    <bean id="persistenceHelper" class="org.talend.ps.benchmark.provider.PersistenceHelperImpl"/>
-
     <bean id="WSProvider" class="org.talend.ps.benchmark.provider.WSProvider">
         <property name="historyIn" ref="eventsHistoryIn"></property>
         <property name="historyOut" ref="eventsHistoryOut"></property>

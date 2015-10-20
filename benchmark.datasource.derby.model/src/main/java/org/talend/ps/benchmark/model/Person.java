@@ -6,15 +6,17 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQueries( { 
-	@NamedQuery(name = "ALL_PERSONS", query = "SELECT P FROM Person P")
+@NamedQueries({
+        @NamedQuery(name = "ALL_PERSONS", query = "SELECT P FROM Person P")
 })
+
 public class Person {
-	@Id
-	private String id;
+
+    @Id
+    private String id;
     private String name;
     private String twitterName;
-    
+
     public Person() {
     }
 
@@ -26,27 +28,27 @@ public class Person {
     }
 
     public String getId() {
-		return id;
-	}
+        return id;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getName() {
+    public String getName() {
         return name;
     }
-	
+
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public String getTwitterName() {
         return twitterName;
     }
-    
+
     public void setTwitterName(String twitterName) {
         this.twitterName = twitterName;
     }
-    
+
 }
