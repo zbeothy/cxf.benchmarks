@@ -18,7 +18,6 @@ import org.apache.cxf.jaxws.context.WrappedMessageContext;
 import org.apache.cxf.message.Message;
 import org.talend.ps.benchmark.common.events.BenchmarkConstants;
 import org.talend.ps.benchmark.common.events.History;
-import org.talend.ps.benchmark.model.PersistenceHelper;
 import org.w3c.dom.Element;
 
 /**

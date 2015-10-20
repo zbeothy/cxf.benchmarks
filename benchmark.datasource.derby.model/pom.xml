@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>benchmark.provider.commands</artifactId>
+	<artifactId>benchmark.datasource.derby.model</artifactId>
 	<packaging>bundle</packaging>
 
-	<name>benchmark.provider.commands</name>
+	<name>benchmark.datasource.derby.model</name>
 
 	<parent>
 		<groupId>org.talend.ps.benchmark</groupId>
@@ -15,14 +15,9 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.talend.ps.benchmark</groupId>
-			<artifactId>benchmark.common</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.karaf.shell</groupId>
-			<artifactId>org.apache.karaf.shell.console</artifactId>
-			<version>${karaf.version}</version>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+			<version>2.6.0</version>
 		</dependency>
 	</dependencies>
 
@@ -34,11 +29,8 @@
 				<configuration>
 					<instructions>
 						<Bundle-SymbolicName>${project.name}</Bundle-SymbolicName>
-                        <Import-Package>
-                        	org.apache.felix.service.command,
-                        	*
-                        </Import-Package>
-					</instructions>
+                        <Meta-Persistence>META-INF/persistence.xml</Meta-Persistence>
+                    </instructions>
 				</configuration>
 			</plugin>
 		</plugins>

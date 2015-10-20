@@ -1,46 +1,33 @@
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
-	xmlns:cxf="http://cxf.apache.org/blueprint/core" xmlns:jaxrs="http://cxf.apache.org/blueprint/jaxrs"
-	xmlns:jaxws="http://cxf.apache.org/blueprint/jaxws"
-    xmlns:jpa="http://aries.apache.org/xmlns/jpa/v1.0.0"
-    xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.0.0"	
-	xsi:schemaLocation="
-  http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
-  http://www.osgi.org/xmlns/blueprint-ext/v1.1.0 https://svn.apache.org/repos/asf/aries/tags/blueprint-0.3.1/blueprint-core/src/main/resources/org/apache/aries/blueprint/ext/blueprint-ext.xsd  
-  http://cxf.apache.org/blueprint/jaxws http://cxf.apache.org/schemas/blueprint/jaxws.xsd
-  http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd
-  http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd
-  http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd
-  http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd
-  http://aries.apache.org/xmlns/jpa/v1.0.0 http://aries.apache.org/schemas/jpa/jpa.xsd
-  http://aries.apache.org/xmlns/transactions/v1.0.0 http://aries.apache.org/schemas/transaction/transactionv10.xsd
-  ">
-	<!-- cm:property-placeholder persistent-id="benchmark.provider"
-		update-strategy="reload">
-	</cm:property-placeholder-->
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:jaxws="http://cxf.apache.org/blueprint/jaxws"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+  http://cxf.apache.org/blueprint/jaxws http://cxf.apache.org/schemas/blueprint/jaxws.xsd">
 
-	<reference id="eventsHistoryIn" interface="org.talend.ps.benchmark.common.events.History" filter="(type=in)"/>
-	<reference id="eventsHistoryOut" interface="org.talend.ps.benchmark.common.events.History" filter="(type=out)"/>
+    <reference id="eventsHistoryIn" interface="org.talend.ps.benchmark.common.events.History" filter="(type=in)"/>
+    <reference id="eventsHistoryOut" interface="org.talend.ps.benchmark.common.events.History" filter="(type=out)"/>
 
-	<bean id="WSProvider" class="org.talend.ps.benchmark.provider.WSProvider">
-		<property name="historyIn" ref="eventsHistoryIn"></property>
-		<property name="historyOut" ref="eventsHistoryOut"></property>
-		<property name="jpaActivity">
-		 <value>persist</value>
-		</property>
-		<property name="persistenceHelper" ref="persistenceHelper"/>
-	</bean>
+    <bean id="persistenceHelper" class="org.talend.ps.benchmark.provider.PersistenceHelperImpl"/>
 
-	<bean id="BooleanTrue" class="java.lang.Boolean">
-		<argument value="true" />
-	</bean>
+    <bean id="WSProvider" class="org.talend.ps.benchmark.provider.WSProvider">
+        <property name="historyIn" ref="eventsHistoryIn"></property>
+        <property name="historyOut" ref="eventsHistoryOut"></property>
+        <property name="jpaActivity">
+            <value>persist</value>
+        </property>
+        <property name="persistenceHelper" ref="persistenceHelper"/>
+    </bean>
 
-	<jaxws:endpoint xmlns:tns="http://www.talend.org/benchmark"
-		implementor="#WSProvider" endpointName="tns:WSProviderEndpoint"
-		serviceName="tns:BenchmarkService" address="/WSProvider">
-		<jaxws:properties>
-			<entry key="jaxws.provider.interpretNullAsOneway" value-ref="BooleanTrue" />
-		</jaxws:properties>
-	</jaxws:endpoint>
+    <bean id="BooleanTrue" class="java.lang.Boolean">
+        <argument value="true"/>
+    </bean>
+
+    <jaxws:endpoint xmlns:tns="http://www.talend.org/benchmark"
+                    implementor="#WSProvider" endpointName="tns:WSProviderEndpoint"
+                    serviceName="tns:BenchmarkService" address="/WSProvider">
+        <jaxws:properties>
+            <entry key="jaxws.provider.interpretNullAsOneway" value-ref="BooleanTrue"/>
+        </jaxws:properties>
+    </jaxws:endpoint>
 
 </blueprint>

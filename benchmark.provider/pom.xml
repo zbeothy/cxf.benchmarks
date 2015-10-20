@@ -6,11 +6,6 @@
   <packaging>bundle</packaging>
 
   <name>benchmark.provider</name>
-  <url>http://maven.apache.org</url>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
 
   <parent>
     <groupId>org.talend.ps.benchmark</groupId>
@@ -29,12 +24,6 @@
 			<artifactId>benchmark.provider.logic</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<!-- CXF dependencies -->
-		<!--<dependency>-->
-			<!--<groupId>org.apache.cxf</groupId>-->
-			<!--<artifactId>cxf-api</artifactId>-->
-			<!--<version>${cxf.version}</version>-->
-		<!--</dependency>-->
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-frontend-jaxws</artifactId>
@@ -42,18 +31,18 @@
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.core</artifactId>
-			<version>4.2.0</version>
+			<version>${osgi.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.karaf.shell</groupId>
 			<artifactId>org.apache.karaf.shell.console</artifactId>
-			<version>2.2.6</version>
+			<version>${karaf.version}</version>
 		</dependency>
 	</dependencies>
 
