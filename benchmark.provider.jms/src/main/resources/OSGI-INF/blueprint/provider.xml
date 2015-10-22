@@ -7,7 +7,7 @@
 	<reference id="eventsHistory" interface="org.talend.ps.benchmark.common.events.History" filter="(type=in)"/>
 
 	<bean id="WSProvider" class="org.talend.ps.benchmark.provider.WSProvider">
-		<property name="history" ref="eventsHistory"></property>
+		<property name="history" ref="eventsHistory"/>
 	</bean>
 
 	<bean id="BooleanTrue" class="java.lang.Boolean">

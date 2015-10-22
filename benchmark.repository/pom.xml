@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>benchmark.repository</artifactId>
+	<packaging>pom</packaging>
+
+	<name>benchmark.repository</name>
+	
+	<parent>
+		<groupId>org.talend.ps.benchmark</groupId>
+		<artifactId>benchmark.parent</artifactId>
+		<version>0.1-SNAPSHOT</version>
+	</parent>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.karaf.tooling</groupId>
+				<artifactId>karaf-maven-plugin</artifactId>
+                <version>3.0.5</version>
+				<executions>
+					<execution>
+						<id>add-features-to-repo</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>features-add-to-repository</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</descriptor>
+								<descriptor>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</descriptor>
+                                <descriptor>mvn:org.apache.karaf.features/spring/${karaf.version}/xml/features</descriptor>
+                                <descriptor>mvn:org.talend.esb/features/${tesb.version}/xml</descriptor>
+                                <descriptor>mvn:org.talend.ps.benchmark/benchmark.features/${project.version}/xml</descriptor>
+							</descriptors>
+							<features>
+								<feature>benchmark-consumer-sax</feature>
+								<feature>benchmark-consumer-dom</feature>
+								<feature>benchmark-consumer-jms-dom</feature>
+								<feature>benchmark-consumer-locator-dom</feature>
+								<feature>benchmark-consumer-sam-dom</feature>
+								<feature>benchmark-provider</feature>
+								<feature>benchmark-provider-jms</feature>
+								<feature>benchmark-provider-locator</feature>
+								<feature>benchmark-provider-sam</feature>
+								<feature>benchmark-provider-jpa</feature>
+							</features>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

@@ -1,17 +1,25 @@
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xmlns:jaxws="http://cxf.apache.org/blueprint/jaxws"
+           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
-  http://cxf.apache.org/blueprint/jaxws http://cxf.apache.org/schemas/blueprint/jaxws.xsd">
+  http://cxf.apache.org/blueprint/jaxws http://cxf.apache.org/schemas/blueprint/jaxws.xsd
+  http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd">
+
+    <cm:property-placeholder persistent-id="benchmark.provider.logic.jpa" update-strategy="reload">
+        <cm:default-properties>
+            <cm:property name="jpaActivity" value="persist"/>
+        </cm:default-properties>
+    </cm:property-placeholder>
 
     <reference id="eventsHistoryIn" interface="org.talend.ps.benchmark.common.events.History" filter="(type=in)"/>
     <reference id="eventsHistoryOut" interface="org.talend.ps.benchmark.common.events.History" filter="(type=out)"/>
 
     <bean id="WSProvider" class="org.talend.ps.benchmark.provider.WSProvider">
-        <property name="historyIn" ref="eventsHistoryIn"></property>
-        <property name="historyOut" ref="eventsHistoryOut"></property>
+        <property name="historyIn" ref="eventsHistoryIn"/>
+        <property name="historyOut" ref="eventsHistoryOut"/>
         <property name="jpaActivity">
-            <value>persist</value>
+            <value>${jpaActivity}</value>
         </property>
         <property name="persistenceHelper" ref="persistenceHelper"/>
     </bean>

@@ -67,6 +67,9 @@
         <configfile finalname="/etc/benchmark.provider.cfg">
             mvn:${project.groupId}/benchmark.features/${project.version}/cfg/benchmark.provider
         </configfile>
+        <configfile finalname="/etc/benchmark.provider.jms.cfg">
+            mvn:${project.groupId}/benchmark.features/${project.version}/cfg/benchmark.provider.jms
+        </configfile>
     </feature>
 
     <feature name="benchmark-provider-locator" version="${project.version}">
@@ -95,14 +98,20 @@
         <feature>eclipselink</feature>
         <bundle>mvn:org.apache.felix/org.apache.felix.coordinator/1.0.0</bundle>
         <bundle>mvn:org.apache.aries.transaction/org.apache.aries.transaction.blueprint/1.1.1</bundle>
-        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.derby/10.8.1.2_1</bundle>
-        <bundle>mvn:${project.groupId}/benchmark.datasource.derby/${project.version}</bundle>
-        <bundle>mvn:${project.groupId}/benchmark.datasource.derby.model/${project.version}</bundle>
+        <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.postgresql/9.2-1003-jdbc4_1</bundle>
+        <bundle>mvn:${project.groupId}/benchmark.datasource/${project.version}</bundle>
         <bundle>mvn:${project.groupId}/benchmark.common/${project.version}</bundle>
+        <bundle>mvn:${project.groupId}/benchmark.provider.logic.jpa.model/${project.version}</bundle>
         <bundle>mvn:${project.groupId}/benchmark.provider.logic.jpa/${project.version}</bundle>
         <bundle>mvn:${project.groupId}/benchmark.provider.commands/${project.version}</bundle>
         <configfile finalname="/etc/benchmark.provider.cfg">
             mvn:${project.groupId}/benchmark.features/${project.version}/cfg/benchmark.provider
+        </configfile>
+        <configfile finalname="/etc/benchmark.provider.logic.jpa.cfg">
+            mvn:${project.groupId}/benchmark.features/${project.version}/cfg/benchmark.provider.logic.jpa
+        </configfile>
+        <configfile finalname="/etc/benchmark.datasource.cfg">
+            mvn:${project.groupId}/benchmark.features/${project.version}/cfg/benchmark.datasource
         </configfile>
     </feature>
 </features>

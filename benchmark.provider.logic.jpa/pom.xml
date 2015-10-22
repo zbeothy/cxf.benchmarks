@@ -31,7 +31,7 @@
         </dependency>
         <dependency>
             <groupId>org.talend.ps.benchmark</groupId>
-            <artifactId>benchmark.datasource.derby.model</artifactId>
+            <artifactId>benchmark.provider.logic.jpa.model</artifactId>
             <version>${project.version}</version>
         </dependency>
 	</dependencies>

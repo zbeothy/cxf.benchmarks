@@ -70,6 +70,21 @@
                                     <classifier>benchmark.consumer</classifier>
                                     <type>cfg</type>
                                 </artifact>
+                                <artifact>
+                                    <file>target/classes/benchmark.datasource.cfg</file>
+                                    <classifier>benchmark.datasource</classifier>
+                                    <type>cfg</type>
+                                </artifact>
+                                <artifact>
+                                    <file>target/classes/benchmark.provider.logic.jpa.cfg</file>
+                                    <classifier>benchmark.provider.logic.jpa</classifier>
+                                    <type>cfg</type>
+                                </artifact>
+                                <artifact>
+                                    <file>target/classes/benchmark.provider.jms.cfg</file>
+                                    <classifier>benchmark.provider.jms</classifier>
+                                    <type>cfg</type>
+                                </artifact>
                             </artifacts>
                         </configuration>
                     </execution>

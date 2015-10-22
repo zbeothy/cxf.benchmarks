@@ -10,6 +10,13 @@ feature:install benchmark-provider
 feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
 feature:install benchmark-consumer-dom
 
+#Scenario SOAP over http (streaming):
+feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+feature:install benchmark-provider
+
+feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+feature:install benchmark-consumer-sax
+
 #Scenario SOAP over http (Locator):
 tesb:start-locator
 feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
@@ -27,7 +34,6 @@ feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
 feature:install benchmark-consumer-sam-dom
 
 #Scenario SOAP over JMS:
-feature:install activemq-broker
 feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
 feature:install benchmark-provider-jms
 

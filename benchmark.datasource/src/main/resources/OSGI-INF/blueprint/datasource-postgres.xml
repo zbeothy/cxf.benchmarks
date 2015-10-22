@@ -1,0 +1,32 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+  http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd">
+
+
+    <cm:property-placeholder persistent-id="benchmark.datasource" update-strategy="reload">
+        <cm:default-properties>
+            <cm:property name="serverName" value="sop-lk16.servicebackbone.org:5432"/>
+            <cm:property name="user" value="talend"/>
+            <cm:property name="password" value="talend"/>
+        </cm:default-properties>
+    </cm:property-placeholder>
+
+    <bean id="dataSource" class="org.postgresql.ds.PGPoolingDataSource" destroy-method="close">
+        <property name="serverName" value="${serverName}"/>
+        <property name="databaseName" value="jpa_performance"/>
+        <property name="user" value="${user}"/>
+        <property name="password" value="${password}"/>
+        <property name="dataSourceName" value="jpa_performance"/>
+        <property name="initialConnections" value="2"/>
+        <property name="maxConnections" value="4"/>
+    </bean>
+
+    <service ref="dataSource" interface="javax.sql.DataSource">
+        <service-properties>
+            <entry key="osgi.jndi.service.name" value="jpa_performance"/>
+        </service-properties>
+    </service>
+
+</blueprint>

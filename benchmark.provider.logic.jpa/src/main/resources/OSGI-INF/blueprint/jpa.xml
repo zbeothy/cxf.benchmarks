@@ -10,7 +10,7 @@
 
     <bean id="persistenceHelper" class="org.talend.ps.benchmark.provider.PersistenceHelperImpl">
         <tx:transaction method="*" value="Required"/>
-        <jpa:context property="entityManager" unitname="TEST-LOCAL"/>
+        <jpa:context property="entityManager" unitname="jpa_performance"/>
     </bean>
 
 </blueprint>

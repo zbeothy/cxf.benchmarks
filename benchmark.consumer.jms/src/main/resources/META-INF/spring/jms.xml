@@ -1,24 +1,27 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xmlns="http://www.springframework.org/schema/beans"
-	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	  http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
-		<property name="brokerURL" value="tcp://localhost:61616?socketBufferSize=131072&#38;ioBufferSize=16384"/>
-        <property name="userName" value="tadmin"/>
-        <property name="password" value="tadmin"/>
+    <import resource="consumer.xml"/>
+
+    <bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL">
+            <value>${brokerURL}</value>
+        </property>
         <property name="useAsyncSend" value="true"/>
         <property name="dispatchAsync" value="false"/>
-	</bean>
+    </bean>
 
-	<bean id="jmsPooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
-		<property name="connectionFactory" ref="jmsConnectionFactory"/>
-	</bean>
+    <bean id="jmsPooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+    </bean>
 
-	<bean id="jmsConfig" class="org.apache.cxf.transport.jms.JMSConfiguration">
-		<property name="connectionFactory" ref="jmsPooledConnectionFactory"/>
-		<property name="targetDestination" value="in.queue"/>
-		<property name="messageType" value="byte"/>
+    <bean id="jmsConfig" class="org.apache.cxf.transport.jms.JMSConfiguration">
+        <property name="connectionFactory" ref="jmsPooledConnectionFactory"/>
+        <property name="targetDestination" value="in.queue"/>
+        <property name="messageType" value="byte"/>
         <property name="concurrentConsumers" value="50"/>
-	</bean>
+    </bean>
 
 </beans>
