@@ -100,7 +100,7 @@ This scenario is executed with the following settings, which can be adjusted in 
  
 | Message Size  | Message Count | Thread Count  |
 | ------------- | ------------- | ------------- |
-| small         | 100 0         | 10            |
+| small         | 1000         | 10            |
 
 <p>Provider</p>
 <pre><code>
