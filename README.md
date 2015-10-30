@@ -38,11 +38,13 @@ Tests are triggered with the consumer bundle start. Before starting the actual t
 
 ###SOAP over http (dom):
 This scenario is executed with the following settings, which can be adjusted in *benchmark.consumer.cfg*. 
-Message Size | Message Count | Thread Count
---- | ---
-small | 5000 | 60
-medium | 5000 | 40
-large | 500 | 10
+
+| Message Size  | Message Count | Thread Count  |
+| ------------- | ------------- | ------------- |
+| small         | 5000          | 60            |
+| medium        | 5000          | 40            |
+| large         | 500           | 10            |
+
 <p>Provider</p>
 <pre><code>
 feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
@@ -55,12 +57,12 @@ feature:install benchmark-consumer-dom
 </code></pre>
 
 ###SOAP over http (sax/streaming):
-This scenario is executed with the following settings, which can be adjusted in *benchmark.consumer.cfg*. 
-Message Size | Message Count | Thread Count
---- | ---
-small | 5000 | 60
-medium | 5000 | 40
-large | 500 | 10
+This scenario is executed with the following settings, which can be adjusted in *benchmark.consumer.cfg*.
+ 
+| Message Size  | Message Count | Thread Count  |
+| ------------- | ------------- | ------------- |
+| small         | 5000          | 60            |
+
 <p>Provider</p>
 <pre><code>
 feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
@@ -73,6 +75,14 @@ feature:install benchmark-consumer-sax
 </code></pre>
 
 ###SOAP over http (Locator):
+This scenario is executed with the following settings, which can be adjusted in *benchmark.consumer.cfg*.
+ 
+| Message Size  | Message Count | Thread Count  |
+| ------------- | ------------- | ------------- |
+| small         | 10000         | 50            |
+
+Furthermore the address has to be changed to locator://.
+
 <p>Provider</p>
 <pre><code>
 tesb:start-locator
@@ -86,6 +96,12 @@ feature:install benchmark-consumer-locator-dom
 </code></pre>
 
 ###Scenario SOAP over http (SAM):
+This scenario is executed with the following settings, which can be adjusted in *benchmark.consumer.cfg*.
+ 
+| Message Size  | Message Count | Thread Count  |
+| ------------- | ------------- | ------------- |
+| small         | 100 0         | 10            |
+
 <p>Provider</p>
 <pre><code>
 tesb:start-sam
@@ -99,6 +115,16 @@ feature:install benchmark-consumer-sam-dom
 </code></pre>
 
 ###SOAP over JMS:
+This scenario is executed with the following settings, which can be adjusted in *benchmark.consumer.cfg*. 
+
+| Message Size  | Message Count | Thread Count  |
+| ------------- | ------------- | ------------- |
+| small         | 5000          | 50            |
+| medium        | 5000          | 50            |
+| large         | 100           | 10            |
+
+Furthermore the address has to be changed to jms://.
+
 <p>Provider</p>
 <pre><code>
 feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
@@ -111,6 +137,14 @@ feature:install benchmark-consumer-jms-dom
 </code></pre>
 
 ###SOAP over http (JPA):
+This scenario is executed with the following settings, which can be adjusted in *benchmark.consumer.cfg*. 
+
+| Message Size  | Message Count | Thread Count  |
+| ------------- | ------------- | ------------- |
+| small         | 5000          | 50            |
+
+The database connection can be adjusted in *benchmark.datasource.cfg*.
+
 <p>Provider</p>
 <pre><code>
 feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
