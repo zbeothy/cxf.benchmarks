@@ -2,7 +2,11 @@
 
 - - -
 
-Contains performance benchmarks for CXF, Karaf deployment
+Contains performance benchmarks for CXF, Karaf deployment. If the test are executed on Solaris adjust the memory 
+allocation by using 
+<pre><code>
+export LD_PRELOAD_64=/usr/lib/64/libmtmalloc.so
+</code></pre>
 
 ##Prerequisites
 * Setup 2 TESB containers
@@ -11,7 +15,7 @@ Contains performance benchmarks for CXF, Karaf deployment
 <br />
 **Consumer**, running with C1 port configuration
 <pre><code>
-    source scripts/configureC1.sh
+source scripts/configureC1.sh
 </pre></code>
 adjusted system.properties
 <pre><code>
