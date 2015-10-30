@@ -11,7 +11,7 @@ Contains performance benchmarks for CXF, Karaf deployment
 <br />
 **Consumer**, running with C1 port configuration
 <pre><code>
-source scripts/configureC1.sh
+    source scripts/configureC1.sh
 </pre></code>
 adjusted system.properties
 <pre><code>
@@ -46,15 +46,11 @@ This scenario is executed with the following settings, which can be adjusted in 
 | large         | 500           | 10            |
 
 <p>Provider</p>
-<pre><code>
-feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
-feature:install benchmark-provider
-</code></pre>
+    feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+    feature:install benchmark-provider
 <p>Consumer</p>
-<pre><code>
-feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
-feature:install benchmark-consumer-dom
-</code></pre>
+    feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+    feature:install benchmark-consumer-dom
 
 ###SOAP over http (sax/streaming):
 This scenario is executed with the following settings, which can be adjusted in *benchmark.consumer.cfg*.
@@ -64,15 +60,11 @@ This scenario is executed with the following settings, which can be adjusted in 
 | small         | 5000          | 60            |
 
 <p>Provider</p>
-<pre><code>
-feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
-feature:install benchmark-provider
-</code></pre>
+    feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+    feature:install benchmark-provider
 <p>Consumer</p>
-<pre><code>
-feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
-feature:install benchmark-consumer-sax
-</code></pre>
+    feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+    feature:install benchmark-consumer-sax
 
 ###SOAP over http (Locator):
 This scenario is executed with the following settings, which can be adjusted in *benchmark.consumer.cfg*.
@@ -84,16 +76,12 @@ This scenario is executed with the following settings, which can be adjusted in 
 Furthermore the address has to be changed to locator://.
 
 <p>Provider</p>
-<pre><code>
-tesb:start-locator
-feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
-feature:install benchmark-provider-locator
-</code></pre>
+    tesb:start-locator
+    feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+    feature:install benchmark-provider-locator
 <p>Consumer</p>
-<pre><code>
-feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
-feature:install benchmark-consumer-locator-dom
-</code></pre>
+    feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+    feature:install benchmark-consumer-locator-dom
 
 ###Scenario SOAP over http (SAM):
 This scenario is executed with the following settings, which can be adjusted in *benchmark.consumer.cfg*.
@@ -103,16 +91,12 @@ This scenario is executed with the following settings, which can be adjusted in 
 | small         | 1000         | 10            |
 
 <p>Provider</p>
-<pre><code>
-tesb:start-sam
-feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
-feature:install benchmark-provider-sam
-</code></pre>
+    tesb:start-sam
+    feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+    feature:install benchmark-provider-sam
 <p>Consumer</p>
-<pre><code>
-feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
-feature:install benchmark-consumer-sam-dom
-</code></pre>
+    feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+    feature:install benchmark-consumer-sam-dom
 
 ###SOAP over JMS:
 This scenario is executed with the following settings, which can be adjusted in *benchmark.consumer.cfg*. 
@@ -123,18 +107,15 @@ This scenario is executed with the following settings, which can be adjusted in 
 | medium        | 5000          | 50            |
 | large         | 100           | 10            |
 
-Furthermore the address has to be changed to jms://.
+Furthermore the address has to be changed to jms://. Please find the needed broker configuration in static module of the
+project. To switch the persistence mode of the broker add the persistent=false flag to *activemq.cfg*.
 
 <p>Provider</p>
-<pre><code>
-feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
-feature:install benchmark-provider-jms
-</code></pre>
+    feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+    feature:install benchmark-provider-jms
 <p>Consumer</p>
-<pre><code>
-feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
-feature:install benchmark-consumer-jms-dom
-</code></pre>
+    feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+    feature:install benchmark-consumer-jms-dom
 
 ###SOAP over http (JPA):
 This scenario is executed with the following settings, which can be adjusted in *benchmark.consumer.cfg*. 
@@ -146,12 +127,8 @@ This scenario is executed with the following settings, which can be adjusted in 
 The database connection can be adjusted in *benchmark.datasource.cfg*.
 
 <p>Provider</p>
-<pre><code>
-feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
-feature:install benchmark-provider-jpa
-</code></pre>
+    feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+    feature:install benchmark-provider-jpa
 <p>Consumer</p>
-<pre><code>
-feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
-feature:install benchmark-consumer-dom
-</code></pre>
+    feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
+    feature:install benchmark-consumer-dom
