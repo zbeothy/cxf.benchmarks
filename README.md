@@ -108,7 +108,7 @@ This scenario is executed with the following settings, which can be adjusted in 
 | large         | 100           | 10            |
 
 Furthermore the address has to be changed to jms://. Please find the needed broker configuration in static module of the
-project. To switch the persistence mode of the broker add the persistent=false flag to *activemq.cfg*.
+project. To switch the persistence mode of the broker add the *persistent=false* flag to *activemq.cfg*.
 
 <p>Provider</p>
     feature:repo-add mvn:org.talend.ps.benchmark/benchmark.features/0.1-SNAPSHOT/xml
